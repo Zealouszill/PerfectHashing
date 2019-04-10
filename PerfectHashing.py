@@ -55,11 +55,15 @@ class PerfectHashDict(object):
         self.max_num_chunks = max(math.ceil(len(sToBits(k))/self.chunk_size) for key in possible_keys)
         self.hash_function = list(rand(0, self.num_buckets) for _ in range(self.max_num_chunks)) # Change rand function to be what we think it should be
         
+        
+        # check how many collisons per bucket
+        num_collisions = [] # fill this with the number of collisons to the corresponding bucket
+        # list of lists of items (one list per bucket), size of list should be num_collisions[i] ** 2
+        self.items
+        # Keep choosing 2nd level hash functions until you get one that doesn't collide any of the keys
         # list of lists of ints representing the list of 2nd level hash functions
         self.second_tier_hash_function = []
         
-        # list of lists of items(one list per bucket)
-        self.items
         
     def hash1(s):
         bits = sToBits(s)
